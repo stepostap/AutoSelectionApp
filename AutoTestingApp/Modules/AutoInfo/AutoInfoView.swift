@@ -16,96 +16,13 @@ class AutoInfoView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fillInfo()
-        setConstraints()
+        configView()
         setObservables()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    var markTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Марка"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var distributorTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Производитель"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var priceTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Цена"
-        textField.keyboardType = .decimalPad
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var powerTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Мощность в л.с."
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = .decimalPad
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var timeTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Время до 100 км/ч в сек."
-        textField.keyboardType = .decimalPad
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var driveTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Привод"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var lenTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Длина в мм"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = .numberPad
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var heightTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Высота в мм"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = .numberPad
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var widthTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Ширина в мм"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = .numberPad
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    var viewModel: AutoInfoViewModel
-    var bag = DisposeBag()
-    let picker = UIPickerView()
-    var saveButton: UIBarButtonItem!
     
     init(viewModel: AutoInfoViewModel) {
         self.viewModel = viewModel
@@ -116,16 +33,101 @@ class AutoInfoView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func resignPicker() {
+    private var markTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Марка"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var distributorTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Производитель"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var priceTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Цена"
+        textField.keyboardType = .decimalPad
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var powerTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Мощность в л.с."
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .decimalPad
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var timeTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Время до 100 км/ч в сек."
+        textField.keyboardType = .decimalPad
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var driveTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Привод"
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var lenTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Длина в мм"
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var heightTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Высота в мм"
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var widthTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Ширина в мм"
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private var viewModel: AutoInfoViewModel
+    private var bag = DisposeBag()
+    private let picker = UIPickerView()
+    private var saveButton: UIBarButtonItem!
+    
+    // MARK: - Private methods
+    
+    @objc private func resignPicker() {
         driveTextField.resignFirstResponder()
     }
     
-    @objc func save() {
+    @objc private func save() {
         viewModel.save()
         navigationController?.popViewController(animated: true)
     }
     
-    func configPicker() {
+    private func configPicker() {
         picker.delegate = self
         picker.dataSource = self
         
@@ -145,9 +147,15 @@ class AutoInfoView: UIViewController {
         driveTextField.inputAccessoryView = toolBar
     }
     
-    func setConstraints() {
+    private func configView() {
         view.backgroundColor = .systemBackground
     
+        if let auto = viewModel.auto {
+            navigationItem.title = "\(auto.distributor ?? "") \(auto.mark ?? "")"
+        } else {
+            navigationItem.title = "Добавить автомобиль"
+        }
+        
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         navigationItem.rightBarButtonItem = saveButton
         
@@ -175,7 +183,7 @@ class AutoInfoView: UIViewController {
         configPicker()
     }
     
-    func fillInfo() {
+    private func fillInfo() {
         if let auto = viewModel.auto {
             markTextField.text = auto.mark
             distributorTextField.text = auto.distributor
@@ -189,7 +197,7 @@ class AutoInfoView: UIViewController {
         }
     }
     
-    func setObservables() {
+    private func setObservables() {
         
         markTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.markSubject).disposed(by: bag)
         distributorTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.distributorSubject).disposed(by: bag)
@@ -207,6 +215,7 @@ class AutoInfoView: UIViewController {
     }
 }
 
+// MARK: - PickerView
 extension AutoInfoView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -230,21 +239,19 @@ extension AutoInfoView: UIPickerViewDataSource, UIPickerViewDelegate {
 }
 
 
-// MARK: Keyboard
+// MARK: - Keyboard
 extension AutoInfoView {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
 
-        // check if the top of the keyboard is above the bottom of the currently focused textbox
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
         let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
 
         if textFieldBottomY > keyboardTopY {
             view.frame.origin.y = (view.frame.maxY - keyboardTopY) * -1
-            
         }
     }
     

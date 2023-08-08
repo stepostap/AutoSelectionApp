@@ -20,15 +20,15 @@ class AutoTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraints()
+        configView()
         configSearchController()
         fetchController?.delegate = self
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "price", ascending: true)]
-        configFetchController()
+        reloadData()
         
     }
     
-    func configFetchController() {
+    private func reloadData() {
         fetchController = cacheService.getFetchResultsController(request: fetchRequest)
         do {
             try fetchController!.performFetch()
@@ -38,7 +38,7 @@ class AutoTableViewController: UIViewController {
         tableView.reloadData()
     }
 
-    func setConstraints() {
+    private func configView() {
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         tableView.snp.makeConstraints({ make in
@@ -50,36 +50,35 @@ class AutoTableViewController: UIViewController {
         sortButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.to.line"), style: .plain, target: self, action: #selector(sortDescending))
         navigationItem.leftBarButtonItem = sortButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewAuto))
-        
+        navigationItem.title = "Автомобили на выбор"
     }
     
-    @objc func sortAscending() {
+    @objc private func sortAscending() {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "price", ascending: true)]
         sortButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.to.line"), style: .plain, target: self, action: #selector(sortDescending))
         navigationItem.leftBarButtonItem = sortButton
-        configFetchController()
+        reloadData()
     }
     
-    @objc func sortDescending() {
+    @objc private func sortDescending() {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "price", ascending: false)]
         sortButton = UIBarButtonItem(image: UIImage(systemName: "arrow.down.to.line"), style: .plain, target: self, action: #selector(sortAscending))
         navigationItem.leftBarButtonItem = sortButton
-        configFetchController()
+        reloadData()
     }
     
-    @objc func addNewAuto() {
+    @objc private func addNewAuto() {
         let viewModel = AutoInfoViewModel(cacheService: cacheService, auto: nil)
         let view = AutoInfoView(viewModel: viewModel)
         navigationController?.pushViewController(view, animated: true)
-
     }
     
-    func configureCell(cell: UITableViewCell, withObject auto: Auto) {
+    private func configureCell(cell: UITableViewCell, withObject auto: Auto) {
         cell.textLabel?.text = auto.mark ?? ""
         cell.detailTextLabel?.text = auto.distributor ?? "-1"
     }
     
-    func configSearchController() {
+    private func configSearchController() {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Поиск по марке и модели"
         searchController.hidesNavigationBarDuringPresentation = false
@@ -116,14 +115,18 @@ extension AutoTableViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension AutoTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let product = (fetchController?.object(at: indexPath))!
         let vc = AutoInfoView(viewModel: AutoInfoViewModel(cacheService: cacheService, auto: product))
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
+// MARK: - NSFetchedResultsControllerDelegate
 
 extension AutoTableViewController: NSFetchedResultsControllerDelegate {
 
@@ -157,15 +160,18 @@ extension AutoTableViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+// MARK: - UISearchResultsUpdating
+
 extension AutoTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let term = searchController.searchBar.text, !term.isEmpty {
-            let predicate = NSPredicate(format: "mark LIKE %@", argumentArray: ["*\(term)*"])
+            let predicate = NSPredicate(format: "mark LIKE[c] %@ OR distributor LIKE[c] %@", argumentArray: ["*\(term)*", "*\(term)*"])
+            
             fetchRequest.predicate = predicate
-            configFetchController()
+            reloadData()
         } else {
             fetchRequest.predicate = nil
-            configFetchController()
+            reloadData()
         }
     }
 }
