@@ -19,7 +19,6 @@ class AutoInfoView: UIViewController {
         configView()
         setObservables()
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -33,35 +32,31 @@ class AutoInfoView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var markTextField: UITextField = {
+    private var modelTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Марка"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите модель..."
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private var distributorTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Производитель"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите производителя..."
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private var priceTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Цена"
+        textField.placeholder = "Введите цену..."
         textField.keyboardType = .decimalPad
-        textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private var powerTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Мощность в л.с."
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите л.с..."
         textField.keyboardType = .decimalPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -69,25 +64,22 @@ class AutoInfoView: UIViewController {
     
     private var timeTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Время до 100 км/ч в сек."
+        textField.placeholder = "Время в сек..."
         textField.keyboardType = .decimalPad
-        textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private var driveTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Привод"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Выберите привод..."
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private var lenTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Длина в мм"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите длину..."
         textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -95,8 +87,7 @@ class AutoInfoView: UIViewController {
     
     private var heightTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Высота в мм"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите высоту..."
         textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -104,8 +95,7 @@ class AutoInfoView: UIViewController {
     
     private var widthTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Ширина в мм"
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "Введите ширину..."
         textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -170,22 +160,103 @@ class AutoInfoView: UIViewController {
             make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).offset(-15)
         })
         
-        vStack.addArrangedSubview(markTextField)
-        vStack.addArrangedSubview(distributorTextField)
-        vStack.addArrangedSubview(powerTextField)
-        vStack.addArrangedSubview(timeTextField)
-        vStack.addArrangedSubview(driveTextField)
-        vStack.addArrangedSubview(lenTextField)
-        vStack.addArrangedSubview(widthTextField)
-        vStack.addArrangedSubview(heightTextField)
-        vStack.addArrangedSubview(priceTextField)
+        let modelStack = UIStackView()
+        modelStack.distribution = .fill
+        modelStack.axis = .horizontal
+        modelTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        modelStack.addArrangedSubview(getLabel(width: 90, text: "Модель:"))
+        modelStack.addArrangedSubview(modelTextField)
+        vStack.addArrangedSubview(modelStack)
         
+        let distributorStack = UIStackView()
+        distributorStack.distribution = .fill
+        distributorStack.axis = .horizontal
+        distributorStack.addArrangedSubview(getLabel(width: 80, text: "Марка:"))
+        distributorTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        distributorStack.addArrangedSubview(distributorTextField)
+        vStack.addArrangedSubview(distributorStack)
+        
+        let powerStack = UIStackView()
+        powerStack.distribution = .fill
+        powerStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        powerStack.addArrangedSubview(getLabel(width: 170, text: "Мощность в л.с.:"))
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        powerStack.addArrangedSubview(powerTextField)
+        vStack.addArrangedSubview(powerStack)
+        
+        let timeStack = UIStackView()
+        timeStack.distribution = .fill
+        timeStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        timeStack.addArrangedSubview(getLabel(width: 200, text: "Время до 100км/ч:"))
+        timeTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        timeStack.addArrangedSubview(timeTextField)
+        vStack.addArrangedSubview(timeStack)
+        
+        let driveStack = UIStackView()
+        driveStack.distribution = .fill
+        driveStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        driveStack.addArrangedSubview(getLabel(width: 140, text: "Тип привода:"))
+        driveTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        driveStack.addArrangedSubview(driveTextField)
+        vStack.addArrangedSubview(driveStack)
+        
+        let lenStack = UIStackView()
+        lenStack.distribution = .fill
+        lenStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        lenStack.addArrangedSubview(getLabel(width: 140, text: "Длина в мм.:"))
+        lenTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        lenStack.addArrangedSubview(lenTextField)
+        vStack.addArrangedSubview(lenStack)
+        
+        let widthStack = UIStackView()
+        widthStack.distribution = .fill
+        widthStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        widthStack.addArrangedSubview(getLabel(width: 150, text: "Ширина в мм.:"))
+        widthTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        widthStack.addArrangedSubview(widthTextField)
+        vStack.addArrangedSubview(widthStack)
+        
+        let heightStack = UIStackView()
+        heightStack.distribution = .fill
+        heightStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        heightStack.addArrangedSubview(getLabel(width: 145, text: "Высота в мм.:"))
+        heightTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        heightStack.addArrangedSubview(heightTextField)
+        vStack.addArrangedSubview(heightStack)
+        
+        let priceStack = UIStackView()
+        priceStack.distribution = .fill
+        priceStack.axis = .horizontal
+        powerTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        priceStack.addArrangedSubview(getLabel(width: 160, text: "Стоимость в ₽:"))
+        priceTextField.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        priceStack.addArrangedSubview(priceTextField)
+        vStack.addArrangedSubview(priceStack)
+                
         configPicker()
+    }
+    
+    private func getLabel(width: CGFloat, text: String) -> UILabel {
+        let label = UILabel()
+        label.snp.makeConstraints({ $0.width.equalTo(getRelativeWidth(width)) })
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: getRelativeWidth(22))
+        return label
+    }
+    
+    private func getRelativeWidth(_ size: CGFloat) -> CGFloat {
+        return size * (CGFloat(UIScreen.main.bounds.width) / 375.0)
     }
     
     private func fillInfo() {
         if let auto = viewModel.auto {
-            markTextField.text = auto.mark
+            modelTextField.text = auto.mark
             distributorTextField.text = auto.distributor
             powerTextField.text = auto.power.description
             widthTextField.text = auto.width.description
@@ -198,8 +269,7 @@ class AutoInfoView: UIViewController {
     }
     
     private func setObservables() {
-        
-        markTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.markSubject).disposed(by: bag)
+        modelTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.markSubject).disposed(by: bag)
         distributorTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.distributorSubject).disposed(by: bag)
         powerTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.powerSubject).disposed(by: bag)
         widthTextField.rx.text.map({$0 ?? ""}).bind(to: viewModel.widthSubject).disposed(by: bag)
@@ -259,6 +329,4 @@ extension AutoInfoView {
            view.frame.origin.y = 0
     }
 }
-
-
 

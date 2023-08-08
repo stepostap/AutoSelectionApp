@@ -74,8 +74,8 @@ class AutoTableViewController: UIViewController {
     }
     
     private func configureCell(cell: UITableViewCell, withObject auto: Auto) {
-        cell.textLabel?.text = auto.mark ?? ""
-        cell.detailTextLabel?.text = auto.distributor ?? "-1"
+        cell.textLabel?.text = "\(auto.distributor ?? "") \(auto.mark ?? "")"
+        cell.detailTextLabel?.text = "\(auto.price.description) ₽"
     }
     
     private func configSearchController() {
@@ -120,6 +120,7 @@ extension AutoTableViewController: UITableViewDataSource {
 extension AutoTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        searchController.searchBar.resignFirstResponder()
         let product = (fetchController?.object(at: indexPath))!
         let vc = AutoInfoView(viewModel: AutoInfoViewModel(cacheService: cacheService, auto: product))
         navigationController?.pushViewController(vc, animated: true)
