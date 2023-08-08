@@ -86,16 +86,6 @@ class AutoInfoViewModel {
         Observable.combineLatest(validLen, validMark, validPower, validWidth, validHeight, validDistributor, validAcceleration, validPrice).map({$0.0 && $0.1 && $0.2 && $0.3 && $0.4 && $0.5 && $0.6 && $0.7})
     }
     
-    private func validInt(str: String) -> Bool {
-        let int = Int16(str)
-        return int ?? -1 > 0
-    }
-    
-    private func validDouble(str: String) -> Bool {
-        let double = Double(str)
-        return double ?? -1 > 0
-    }
-    
     func save() {
         if let auto = auto {
             fillAutoInfo(auto: auto)
@@ -106,6 +96,18 @@ class AutoInfoViewModel {
         cacheService.saveContext()
     }
     
+    // MARK: - Private methods
+    
+    private func validInt(str: String) -> Bool {
+        let int = Int16(str)
+        return int ?? -1 > 0
+    }
+    
+    private func validDouble(str: String) -> Bool {
+        let double = Double(str)
+        return double ?? -1 > 0
+    }
+
     private func fillAutoInfo(auto: Auto) {
         do {
             auto.driveType = try driveTypeSubject.value()

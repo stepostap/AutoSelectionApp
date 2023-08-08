@@ -23,9 +23,9 @@ class AutoTableViewController: UIViewController {
         configView()
         configSearchController()
         fetchController?.delegate = self
+        self.definesPresentationContext = true
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "price", ascending: true)]
         reloadData()
-        
     }
     
     private func reloadData() {
@@ -86,7 +86,6 @@ class AutoTableViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
 extension AutoTableViewController: UITableViewDataSource {
@@ -120,7 +119,6 @@ extension AutoTableViewController: UITableViewDataSource {
 extension AutoTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        searchController.searchBar.resignFirstResponder()
         let product = (fetchController?.object(at: indexPath))!
         let vc = AutoInfoView(viewModel: AutoInfoViewModel(cacheService: cacheService, auto: product))
         navigationController?.pushViewController(vc, animated: true)
