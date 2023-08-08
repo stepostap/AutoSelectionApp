@@ -9,23 +9,40 @@
 /* Begin PBXBuildFile section */
 		E83E674D2A7FB7AC0071E288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E674C2A7FB7AC0071E288 /* AppDelegate.swift */; };
 		E83E674F2A7FB7AC0071E288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E674E2A7FB7AC0071E288 /* SceneDelegate.swift */; };
-		E83E67512A7FB7AC0071E288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67502A7FB7AC0071E288 /* ViewController.swift */; };
+		E83E67512A7FB7AC0071E288 /* AutoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67502A7FB7AC0071E288 /* AutoTableViewController.swift */; };
 		E83E67542A7FB7AC0071E288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E83E67522A7FB7AC0071E288 /* Main.storyboard */; };
 		E83E67572A7FB7AC0071E288 /* AutoTestingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E83E67552A7FB7AC0071E288 /* AutoTestingApp.xcdatamodeld */; };
 		E83E67592A7FB7AE0071E288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E83E67582A7FB7AE0071E288 /* Assets.xcassets */; };
 		E83E675C2A7FB7AE0071E288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E83E675A2A7FB7AE0071E288 /* LaunchScreen.storyboard */; };
+		E83E67652A7FC1280071E288 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E83E67642A7FC1280071E288 /* SnapKit */; };
+		E83E67702A8006130071E288 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E83E676F2A8006130071E288 /* RxCocoa */; };
+		E83E67722A8006130071E288 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E83E67712A8006130071E288 /* RxSwift */; };
+		E83E67742A8006450071E288 /* AutoInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67732A8006450071E288 /* AutoInfoViewModel.swift */; };
+		E83E67762A80FF680071E288 /* AutoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67752A80FF680071E288 /* AutoInfoView.swift */; };
+		E83E677C2A812EB60071E288 /* DriveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E677B2A812EB60071E288 /* DriveType.swift */; };
+		E83E67872A8159C90071E288 /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67862A8159C90071E288 /* UIResponder+.swift */; };
+		E83E67892A822AD30071E288 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E67882A822AD30071E288 /* CacheService.swift */; };
+		E83E678C2A8275890071E288 /* Auto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E678A2A8275890071E288 /* Auto+CoreDataClass.swift */; };
+		E83E678D2A8275890071E288 /* Auto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E678B2A8275890071E288 /* Auto+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E83E67492A7FB7AC0071E288 /* AutoTestingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoTestingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83E674C2A7FB7AC0071E288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E83E674E2A7FB7AC0071E288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E83E67502A7FB7AC0071E288 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E83E67502A7FB7AC0071E288 /* AutoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTableViewController.swift; sourceTree = "<group>"; };
 		E83E67532A7FB7AC0071E288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E83E67562A7FB7AC0071E288 /* AutoTestingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AutoTestingApp.xcdatamodel; sourceTree = "<group>"; };
 		E83E67582A7FB7AE0071E288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E83E675B2A7FB7AE0071E288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E83E675D2A7FB7AE0071E288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E83E67732A8006450071E288 /* AutoInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoInfoViewModel.swift; sourceTree = "<group>"; };
+		E83E67752A80FF680071E288 /* AutoInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoInfoView.swift; sourceTree = "<group>"; };
+		E83E677B2A812EB60071E288 /* DriveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveType.swift; sourceTree = "<group>"; };
+		E83E67862A8159C90071E288 /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
+		E83E67882A822AD30071E288 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		E83E678A2A8275890071E288 /* Auto+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auto+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E83E678B2A8275890071E288 /* Auto+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83E67722A8006130071E288 /* RxSwift in Frameworks */,
+				E83E67702A8006130071E288 /* RxCocoa in Frameworks */,
+				E83E67652A7FC1280071E288 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +62,8 @@
 		E83E67402A7FB7AC0071E288 = {
 			isa = PBXGroup;
 			children = (
+				E83E678A2A8275890071E288 /* Auto+CoreDataClass.swift */,
+				E83E678B2A8275890071E288 /* Auto+CoreDataProperties.swift */,
 				E83E674B2A7FB7AC0071E288 /* AutoTestingApp */,
 				E83E674A2A7FB7AC0071E288 /* Products */,
 			);
@@ -58,16 +80,29 @@
 		E83E674B2A7FB7AC0071E288 /* AutoTestingApp */ = {
 			isa = PBXGroup;
 			children = (
+				E83E67852A8159B90071E288 /* Extensions */,
 				E83E674C2A7FB7AC0071E288 /* AppDelegate.swift */,
 				E83E674E2A7FB7AC0071E288 /* SceneDelegate.swift */,
-				E83E67502A7FB7AC0071E288 /* ViewController.swift */,
+				E83E67502A7FB7AC0071E288 /* AutoTableViewController.swift */,
 				E83E67522A7FB7AC0071E288 /* Main.storyboard */,
 				E83E67582A7FB7AE0071E288 /* Assets.xcassets */,
 				E83E675A2A7FB7AE0071E288 /* LaunchScreen.storyboard */,
 				E83E675D2A7FB7AE0071E288 /* Info.plist */,
 				E83E67552A7FB7AC0071E288 /* AutoTestingApp.xcdatamodeld */,
+				E83E67732A8006450071E288 /* AutoInfoViewModel.swift */,
+				E83E67752A80FF680071E288 /* AutoInfoView.swift */,
+				E83E677B2A812EB60071E288 /* DriveType.swift */,
+				E83E67882A822AD30071E288 /* CacheService.swift */,
 			);
 			path = AutoTestingApp;
+			sourceTree = "<group>";
+		};
+		E83E67852A8159B90071E288 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E83E67862A8159C90071E288 /* UIResponder+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +121,11 @@
 			dependencies = (
 			);
 			name = AutoTestingApp;
+			packageProductDependencies = (
+				E83E67642A7FC1280071E288 /* SnapKit */,
+				E83E676F2A8006130071E288 /* RxCocoa */,
+				E83E67712A8006130071E288 /* RxSwift */,
+			);
 			productName = AutoTestingApp;
 			productReference = E83E67492A7FB7AC0071E288 /* AutoTestingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +154,10 @@
 				Base,
 			);
 			mainGroup = E83E67402A7FB7AC0071E288;
+			packageReferences = (
+				E83E67632A7FC1280071E288 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E83E676E2A8006130071E288 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = E83E674A2A7FB7AC0071E288 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,10 +185,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E83E67512A7FB7AC0071E288 /* ViewController.swift in Sources */,
+				E83E67872A8159C90071E288 /* UIResponder+.swift in Sources */,
+				E83E67512A7FB7AC0071E288 /* AutoTableViewController.swift in Sources */,
+				E83E677C2A812EB60071E288 /* DriveType.swift in Sources */,
+				E83E678D2A8275890071E288 /* Auto+CoreDataProperties.swift in Sources */,
 				E83E674D2A7FB7AC0071E288 /* AppDelegate.swift in Sources */,
+				E83E67742A8006450071E288 /* AutoInfoViewModel.swift in Sources */,
 				E83E674F2A7FB7AC0071E288 /* SceneDelegate.swift in Sources */,
+				E83E67762A80FF680071E288 /* AutoInfoView.swift in Sources */,
 				E83E67572A7FB7AC0071E288 /* AutoTestingApp.xcdatamodeld in Sources */,
+				E83E678C2A8275890071E288 /* Auto+CoreDataClass.swift in Sources */,
+				E83E67892A822AD30071E288 /* CacheService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +415,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E83E67632A7FC1280071E288 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E83E676E2A8006130071E288 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E83E67642A7FC1280071E288 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83E67632A7FC1280071E288 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E83E676F2A8006130071E288 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83E676E2A8006130071E288 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		E83E67712A8006130071E288 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83E676E2A8006130071E288 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E83E67552A7FB7AC0071E288 /* AutoTestingApp.xcdatamodeld */ = {
